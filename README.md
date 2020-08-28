@@ -6,7 +6,9 @@
 
 ```
 
-This Node CLI application takes in information about employees and generates an HTML webpage that displays summaries for each person.
+This Node CLI application takes in information about
+employees and generates an HTML webpage that displays
+summaries for each person.
 
 ```
 
@@ -37,15 +39,20 @@ This Node CLI application takes in information about employees and generates an 
 
 ```
 As a manager:
-I want to generate a webpage that displays my team's basic info.
-So that I have quick access to emails and GitHub profiles.
+I want to generate a webpage that displays
+my team's basic info.
+So that I have quick access to emails
+and GitHub profiles.
 
 ```
 
 ## Usage
 
 ```
-Using the command line application a user can build a team of software engineer employees with different roles. After the user completes the prompts then the team will be displayed in a new HTML file.
+Using the command line application a user can build
+a team of software engineer employees with different roles.
+After the user completes the prompts then the team will
+be displayed in a new HTML file.
 
 ```
 
