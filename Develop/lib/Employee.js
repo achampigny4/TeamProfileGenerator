@@ -1,10 +1,11 @@
 // TODO: Write code to define and export the Employee class
-function Employee(name, id, email) {
+class Employee {
+    constructor(name, id, email) {
     this.name = name;
     this.id = id;
     this.email = email;
     this.role = "Employee";
-
+    //https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes
     Employee.prototype.getName = function(name){
         return this.name;
     };
@@ -17,6 +18,7 @@ function Employee(name, id, email) {
     Employee.prototype.getRole = function(role){
         return this.role;
     };
+};
 };
 
 module.exports = Employee;
