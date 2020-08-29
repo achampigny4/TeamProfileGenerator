@@ -80,6 +80,8 @@ To test Team Profile Generator run the following command in the terminal:
 
 [License Source](https://choosealicense.com/licenses/mit/)
 
+[Class Constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor)
+
 [Object Prototypes](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes)
 
 ## Contact Developer
