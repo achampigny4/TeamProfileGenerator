@@ -9,6 +9,7 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./Develop/lib/htmlRenderer");
+const Choices = require("inquirer/lib/objects/choices");
 
 
 // Write code to use inquirer to gather information about the development team members,
@@ -38,43 +39,100 @@ const render = require("./Develop/lib/htmlRenderer");
 const employees = [];
 
 addEmployee = () => {
-
-}
+    console.log("Add another Team Member");
+    return inquirer.prompt([
+        //questions about Employees
+        {
+            type: "input",
+            message: "What is the Employee's name?",
+            name: "name"
+        },
+        {
+            type: "input",
+            message: "Employee's employee ID:",
+            name: "id"
+        },
+        {
+            type: "input",
+            message: "Employee's email address:",
+            name: "email"
+        },
+        {
+            type: "list",
+            message: "What is the Employee's role?",
+            name: "role",
+            choices: [
+                'Engineer',
+                'Intern'
+            ],
+        }
+    ]).then(choice => {
+        if (choice.role === 'Engineer') {
+            return inquirer.prompt([
+                //question about Engineer
+                {
+                    type: "input",
+                    message: "Engineer's github user name:",
+                    name: "github"
+                }
+            ])} else  {
+                return inquirer.prompt([
+                    //question about Intern
+                    {
+                        type: "input",
+                        message: "Intern's school:",
+                        name: "school"
+                    }
+                ])
+        }
+    // }).then((employeeResults) => {
+    //     employeeResults.role.choices = role;
+    //     const { name, id, email, role, github, school } = employeeResults;
+    //     const newEmployee = new Employee(name, id, email, role, github, school);
+    //     employees.push(newEmployee);
+    //     ////////////////////////
+    //     console.log(employees);
+    //     /////////////////////////
+    //     addEmployee();
+    })
+};
 
 //initializing Prompts
-init = () => { 
+init = () => {
     console.log("Welcome! \nTo Generate a Team, \nAnswer the following prompts \nYour team will be organized in the \noutput folder team.html file.");
-return inquirer.prompt([
-    //questions about Manager
-    {
-        type: "input",
-        message: "Who is the team's Manager?",
-        name: "name"
-    },
-    {
-        type: "input",
-        message: "Manager's employee ID:",
-        name: "id"
-    },
-    {
-        type: "input",
-        message: "Manager's email address:",
-        name: "email"
-    },
-    {
-        type: "input",
-        message: "Manager's office number:",
-        name: "officeNumber"
-    },
-]).then((managerResults) => {
-    managerResults.role = "Manager";
-    const { name, id, email, officeNumber, role} = managerResults;
-    const newManager = new Manager(name, id, email, officeNumber, role);
-    employees.push(newManager);
-    addEmployee();
-})
+    return inquirer.prompt([
+        //questions about Employee
+        {
+            type: "input",
+            message: "Who is the team's Manager?",
+            name: "name"
+        },
+        {
+            type: "input",
+            message: "Manager's employee ID:",
+            name: "id"
+        },
+        {
+            type: "input",
+            message: "Manager's email address:",
+            name: "email"
+        },
+        {
+            type: "input",
+            message: "Manager's office number:",
+            name: "officeNumber"
+        },
+    ]).then((managerResults) => {
+        managerResults.role = "Manager";
+        const { name, id, email, officeNumber, role } = managerResults;
+        const newManager = new Manager(name, id, email, officeNumber, role);
+        employees.push(newManager);
+        //////////////////
+        console.log(employees);
+        //////////////////
+        addEmployee();
+    })
 };
-console.log(employees);
 
 //initialize program and begin asking user questions
 init();
