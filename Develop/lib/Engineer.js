@@ -7,10 +7,9 @@ class Engineer extends Employee {
         this.role = "Engineer";
         this.github = github;
     };
-
+    getGithub() {
+        return this.github;
+    }
 };
 
 module.exports = Engineer;
-// √ Can set GitHUb account via constructor (1 ms)
-// √ getRole() should return "Engineer"
-// × Can get GitHub username via getGithub() (1 ms)
