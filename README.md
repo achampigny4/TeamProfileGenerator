@@ -79,7 +79,7 @@ Copyright (c) 2020 Alissa Champigny
 
 [License Source](https://choosealicense.com/licenses/mit/)
 
-[]()
+[Object Prototypes](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes)
 
 ## Contact Developer
 
