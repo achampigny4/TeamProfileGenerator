@@ -37,6 +37,10 @@ const render = require("./Develop/lib/htmlRenderer");
 //employee objects array
 const employees = [];
 
+addEmployee = () => {
+
+}
+
 //initializing Prompts
 init = () => { 
     console.log("Welcome! \nTo Generate a Team, \nAnswer the following prompts \nYour team will be organized in the \noutput folder team.html file.");
@@ -62,7 +66,15 @@ return inquirer.prompt([
         message: "Manager's office number:",
         name: "officeNumber"
     },
-])};
+]).then((managerResults) => {
+    managerResults.role = "Manager";
+    const { name, id, email, officeNumber, role} = managerResults;
+    const newManager = new Manager(name, id, email, officeNumber, role);
+    employees.push(newManager);
+    addEmployee();
+})
+};
+console.log(employees);
 
 //initialize program and begin asking user questions
 init();
