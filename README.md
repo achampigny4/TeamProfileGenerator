@@ -64,7 +64,7 @@ To install Team Profile Generator dependencies run the following command:
 
 To use Team Profile Generator run the following command in the terminal:
 
-**node index.js**
+**node app.js**
 
 To test Team Profile Generator run the following command in the terminal:
 
