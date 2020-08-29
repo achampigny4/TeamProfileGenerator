@@ -66,10 +66,11 @@ To use Team Profile Generator run the following command in the terminal:
 
 **node index.js**
 
-## License
+To test Team Profile Generator run the following command in the terminal:
 
-**[MIT](https://opensource.org/licenses/MIT) License**
-Copyright (c) 2020 Alissa Champigny
+**npm run test**
+
+<img src="https://raw.githubusercontent.com/achampigny4/TeamProfileGenerator/master/assets/testPASS.png" alt="command line test screenshot"/>
 
 ## Resources
 
@@ -87,4 +88,8 @@ Team Profile Generator was developed by Alissa Champigny
 
 Email Address: achampigny4@gmail.com
 
-[Github Profile](https://github.com/achampigny4)
+[Alissa's Github Profile](https://github.com/achampigny4)
+
+*Copyright (c) 2020 Alissa Champigny*
+
+
