@@ -38,8 +38,9 @@ const Choices = require("inquirer/lib/objects/choices");
 //employee objects array
 const employees = [];
 
+//employees role
 employeeType = () => {
-    console.log("Add another Team Member");
+    console.log("What is the employee's role?");
     return inquirer.prompt([
         //employees role
         {
@@ -60,6 +61,7 @@ employeeType = () => {
     })
 };
 
+//engineer questions
 addEngineer = () => {
     return inquirer.prompt([
         //question about Engineer
@@ -85,17 +87,18 @@ addEngineer = () => {
         }
     ]).then((engineerResults) => {
     engineerResults.role = "Engineer";
-    const { name, id, email, role, github } = engineerResults;
-    const newEngineer = new Engineer(name, id, email, role, github);
+    const { name, id, email, github, role} = engineerResults;
+    const newEngineer = new Engineer(name, id, email, github, role);
     employees.push(newEngineer);
     //////////////////
     console.log(employees);
     //////////////////
-    //ask if next employee in team is engineer or intern
-    employeeType();
-    })
+    //ask if user wants to add another team member
+    addEmployee();
+    });
 };
 
+//intern questions
 addIntern = () => {
     return inquirer.prompt([
         //question about Intern
@@ -121,18 +124,18 @@ addIntern = () => {
         }
     ]).then((internResults) => {
     internResults.role = "Intern";
-    const { name, id, email, role, school } = internResults;
-    const newIntern = new Intern(name, id, email, role, school);
+    const { name, id, email, school, role} = internResults;
+    const newIntern = new Intern(name, id, email, school, role);
     employees.push(newIntern);
     //////////////////
     console.log(employees);
     //////////////////
-    //ask if next employee in team is engineer or intern
-    employeeType();
+    //ask if user wants to add another team member
+    addEmployee();
     });
 };
 
-//initializing Prompts
+//initializing Manager questions and welcome message
 init = () => {
     console.log("Welcome! \nTo Generate a Team, \nAnswer the following prompts \nYour team will be organized in the \noutput folder team.html file.");
     return inquirer.prompt([
@@ -168,6 +171,31 @@ init = () => {
         // addEmployee();
         employeeType();
     })
+};
+
+//add another employee yes or no prompts
+addEmployee = () => {
+    return inquirer.prompt([
+        //add another team member
+        {
+            type: "list",
+            message: "Add another Team Member?",
+            name: "add",
+            choices: [
+                "Yes, add a team member",
+                "No, build html"
+            ],
+        }
+    ]).then(choice => {
+        if (choice.role === "Yes, add a team member") {
+            employeeType();
+        } else {
+            ///////////
+            console.log('render html');
+            ///////////
+            // renderHtml();
+        };
+    });
 };
 
 //initialize program and begin asking user questions
