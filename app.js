@@ -38,25 +38,10 @@ const Choices = require("inquirer/lib/objects/choices");
 //employee objects array
 const employees = [];
 
-addEmployee = () => {
+employeeType = () => {
     console.log("Add another Team Member");
     return inquirer.prompt([
-        //questions about Employees
-        {
-            type: "input",
-            message: "What is the Employee's name?",
-            name: "name"
-        },
-        {
-            type: "input",
-            message: "Employee's employee ID:",
-            name: "id"
-        },
-        {
-            type: "input",
-            message: "Employee's email address:",
-            name: "email"
-        },
+        //employees role
         {
             type: "list",
             message: "What is the Employee's role?",
@@ -68,33 +53,83 @@ addEmployee = () => {
         }
     ]).then(choice => {
         if (choice.role === 'Engineer') {
-            return inquirer.prompt([
-                //question about Engineer
-                {
-                    type: "input",
-                    message: "Engineer's github user name:",
-                    name: "github"
-                }
-            ])} else  {
-                return inquirer.prompt([
-                    //question about Intern
-                    {
-                        type: "input",
-                        message: "Intern's school:",
-                        name: "school"
-                    }
-                ])
+            addEngineer();
+        } else {
+            addIntern();
         }
-    // }).then((employeeResults) => {
-    //     employeeResults.role.choices = role;
-    //     const { name, id, email, role, github, school } = employeeResults;
-    //     const newEmployee = new Employee(name, id, email, role, github, school);
-    //     employees.push(newEmployee);
-    //     ////////////////////////
-    //     console.log(employees);
-    //     /////////////////////////
-    //     addEmployee();
     })
+};
+
+addEngineer = () => {
+    return inquirer.prompt([
+        //question about Engineer
+        {
+            type: "input",
+            message: "What is the Engineer's name?",
+            name: "name"
+        },
+        {
+            type: "input",
+            message: "Engineer's employee ID:",
+            name: "id"
+        },
+        {
+            type: "input",
+            message: "Engineer's email address:",
+            name: "email"
+        },
+        {
+            type: "input",
+            message: "Engineer's github user name:",
+            name: "github"
+        }
+    ]).then((engineerResults) => {
+    engineerResults.role = "Engineer";
+    const { name, id, email, role, github } = engineerResults;
+    const newEngineer = new Engineer(name, id, email, role, github);
+    employees.push(newEngineer);
+    //////////////////
+    console.log(employees);
+    //////////////////
+    //ask if next employee in team is engineer or intern
+    employeeType();
+    })
+};
+
+addIntern = () => {
+    return inquirer.prompt([
+        //question about Intern
+        {
+            type: "input",
+            message: "What is the Intern's name?",
+            name: "name"
+        },
+        {
+            type: "input",
+            message: "Intern's employee ID:",
+            name: "id"
+        },
+        {
+            type: "input",
+            message: "Intern's email address:",
+            name: "email"
+        },
+        {
+            type: "input",
+            message: "Intern's school:",
+            name: "school"
+        }
+    ]).then((internResults) => {
+    internResults.role = "Intern";
+    const { name, id, email, role, school } = internResults;
+    const newIntern = new Intern(name, id, email, role, school);
+    employees.push(newIntern);
+    //////////////////
+    console.log(employees);
+    //////////////////
+    //ask if next employee in team is engineer or intern
+    employeeType();
+    });
 };
 
 //initializing Prompts
@@ -128,9 +163,10 @@ init = () => {
         const newManager = new Manager(name, id, email, officeNumber, role);
         employees.push(newManager);
         //////////////////
-        console.log(employees);
+        // console.log(employees);
         //////////////////
-        addEmployee();
+        // addEmployee();
+        employeeType();
     })
 };
 
