@@ -91,7 +91,7 @@ addEngineer = () => {
     const newEngineer = new Engineer(name, id, email, github, role);
     employees.push(newEngineer);
     //////////////////
-    console.log(employees);
+    // console.log(employees);
     //////////////////
     //ask if user wants to add another team member
     addEmployee();
@@ -128,10 +128,35 @@ addIntern = () => {
     const newIntern = new Intern(name, id, email, school, role);
     employees.push(newIntern);
     //////////////////
-    console.log(employees);
+    // console.log(employees);
     //////////////////
     //ask if user wants to add another team member
     addEmployee();
+    });
+};
+
+//add another employee yes or no prompts
+addEmployee = () => {
+    return inquirer.prompt([
+        //add another team member
+        {
+            type: "list",
+            message: "Add another Team Member?",
+            name: "add",
+            choices: [
+                "Yes, add a team member",
+                "No, build html"
+            ],
+        }
+    ]).then(choice => {
+        if (choice.add === "Yes, add a team member") {
+            employeeType();
+        } else {
+            ///////////
+            console.log('render html');
+            ///////////
+            // renderHtml();
+        };
     });
 };
 
@@ -171,31 +196,6 @@ init = () => {
         // addEmployee();
         employeeType();
     })
-};
-
-//add another employee yes or no prompts
-addEmployee = () => {
-    return inquirer.prompt([
-        //add another team member
-        {
-            type: "list",
-            message: "Add another Team Member?",
-            name: "add",
-            choices: [
-                "Yes, add a team member",
-                "No, build html"
-            ],
-        }
-    ]).then(choice => {
-        if (choice.role === "Yes, add a team member") {
-            employeeType();
-        } else {
-            ///////////
-            console.log('render html');
-            ///////////
-            // renderHtml();
-        };
-    });
 };
 
 //initialize program and begin asking user questions
