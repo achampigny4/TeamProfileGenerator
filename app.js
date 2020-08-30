@@ -135,6 +135,12 @@ addIntern = () => {
     });
 };
 
+renderHtml = () => {
+    ///////////////////////
+    console.log(employees);
+    ///////////////////////
+};
+
 //add another employee yes or no prompts
 addEmployee = () => {
     return inquirer.prompt([
@@ -144,18 +150,18 @@ addEmployee = () => {
             message: "Add another Team Member?",
             name: "add",
             choices: [
-                "Yes, add a team member",
-                "No, build html"
+                "Yes",
+                "No"
             ],
         }
     ]).then(choice => {
-        if (choice.add === "Yes, add a team member") {
+        if (choice.add === "Yes") {
             employeeType();
         } else {
             ///////////
             console.log('render html');
             ///////////
-            // renderHtml();
+            renderHtml();
         };
     });
 };
