@@ -54,9 +54,9 @@ be displayed in a new HTML file.
 
 ```
 
-<img src="https://raw.githubusercontent.com/achampigny4/TeamProfileGenerator/master/assets/userPrompts.png" alt="command line screenshot" width="400"/>
+<img src="https://raw.githubusercontent.com/achampigny4/TeamProfileGenerator/master/assets/userPrompts.png" alt="command line screenshot"/>
 <br>
-<img src="https://raw.githubusercontent.com/achampigny4/TeamProfileGenerator/master/assets/generatedHTML.png" alt="Generated team page" width="400"/>
+<img src="https://raw.githubusercontent.com/achampigny4/TeamProfileGenerator/master/assets/generatedHTML.png" alt="Generated team page"/>
 
 ## Installation
 
@@ -72,7 +72,7 @@ To test Team Profile Generator run the following command in the terminal:
 
 **npm run test**
 
-<img src="https://raw.githubusercontent.com/achampigny4/TeamProfileGenerator/master/assets/testPASS.png" alt="command line test screenshot" width="400"/>
+<img src="https://raw.githubusercontent.com/achampigny4/TeamProfileGenerator/master/assets/testPASS.png" alt="command line test screenshot"/>
 
 ## Resources
 
