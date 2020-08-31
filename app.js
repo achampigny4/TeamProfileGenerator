@@ -10,6 +10,7 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./Develop/lib/htmlRenderer");
 const Choices = require("inquirer/lib/objects/choices");
+const { execFileSync } = require("child_process");
 
 
 // Write code to use inquirer to gather information about the development team members,
@@ -86,15 +87,12 @@ addEngineer = () => {
             name: "github"
         }
     ]).then((engineerResults) => {
-    engineerResults.role = "Engineer";
-    const { name, id, email, github, role} = engineerResults;
-    const newEngineer = new Engineer(name, id, email, github, role);
-    employees.push(newEngineer);
-    //////////////////
-    // console.log(employees);
-    //////////////////
-    //ask if user wants to add another team member
-    addEmployee();
+        engineerResults.role = "Engineer";
+        const { name, id, email, github, role } = engineerResults;
+        const newEngineer = new Engineer(name, id, email, github, role);
+        employees.push(newEngineer);
+        //ask if user wants to add another team member
+        addEmployee();
     });
 };
 
@@ -123,22 +121,13 @@ addIntern = () => {
             name: "school"
         }
     ]).then((internResults) => {
-    internResults.role = "Intern";
-    const { name, id, email, school, role} = internResults;
-    const newIntern = new Intern(name, id, email, school, role);
-    employees.push(newIntern);
-    //////////////////
-    // console.log(employees);
-    //////////////////
-    //ask if user wants to add another team member
-    addEmployee();
+        internResults.role = "Intern";
+        const { name, id, email, school, role } = internResults;
+        const newIntern = new Intern(name, id, email, school, role);
+        employees.push(newIntern);
+        //ask if user wants to add another team member
+        addEmployee();
     });
-};
-
-renderHtml = () => {
-    ///////////////////////
-    console.log(employees);
-    ///////////////////////
 };
 
 //add another employee yes or no prompts
@@ -158,9 +147,6 @@ addEmployee = () => {
         if (choice.add === "Yes") {
             employeeType();
         } else {
-            ///////////
-            console.log('render html');
-            ///////////
             renderHtml();
         };
     });
@@ -196,11 +182,19 @@ init = () => {
         const { name, id, email, officeNumber, role } = managerResults;
         const newManager = new Manager(name, id, email, officeNumber, role);
         employees.push(newManager);
-        //////////////////
-        // console.log(employees);
-        //////////////////
         // addEmployee();
         employeeType();
+    })
+};
+
+renderHtml = () => {
+    const buildHTML = render(employees);
+    fs.writeFile(outputPath, buildHTML, (err) => {
+        if (err) {
+            return console.log(err);
+        } else {
+            return console.log("Team HTML file created in OUTPUT folder!")
+        };
     })
 };
 
