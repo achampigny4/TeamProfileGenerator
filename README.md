@@ -12,13 +12,11 @@ summaries for each person.
 
 ```
 
-<img src="" alt="command line screenshot"/>
-
 ## Video Demo
 
-[Video](link to youtube)
+[Video](https://youtu.be/baxg5geiVZQ)
 
-[![Watch the video](gif or screen shot)](youtube link)
+[![Watch the video](assets/appVideoGif.gif)](https://youtu.be/baxg5geiVZQ)
 
 ## Table of Contents
 
@@ -56,6 +54,10 @@ be displayed in a new HTML file.
 
 ```
 
+<img src="https://raw.githubusercontent.com/achampigny4/TeamProfileGenerator/master/assets/userPrompts.png" alt="command line screenshot" width="400"/>
+<br>
+<img src="https://raw.githubusercontent.com/achampigny4/TeamProfileGenerator/master/assets/generatedHTML.png" alt="Generated team page" width="400"/>
+
 ## Installation
 
 To install Team Profile Generator dependencies run the following command: 
@@ -70,7 +72,7 @@ To test Team Profile Generator run the following command in the terminal:
 
 **npm run test**
 
-<img src="https://raw.githubusercontent.com/achampigny4/TeamProfileGenerator/master/assets/testPASS.png" alt="command line test screenshot"/>
+<img src="https://raw.githubusercontent.com/achampigny4/TeamProfileGenerator/master/assets/testPASS.png" alt="command line test screenshot" width="400"/>
 
 ## Resources
 
